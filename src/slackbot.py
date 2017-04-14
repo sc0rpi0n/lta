@@ -40,7 +40,7 @@ class SlackBot(threading.Thread):
             else:
                 pass
             
-            self.__slack_client.api_call("chat.postMessage", channel= channel, text=message, as_user=True)
+        self.__slack_client.api_call("chat.postMessage", channel= channel, text=message, as_user=True)
     
     def run(self):
         if self.__slack_client.rtm_connect():
