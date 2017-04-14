@@ -33,11 +33,14 @@ class SlackBot(threading.Thread):
         if self.__command_handler:
             message = self.__command_handler.handle(command)
         else:
-            message = {
-                'hi' : 'Hello, how may I help you ?',
-                'do' : 'I would love to once you code how to do it.'
-            }[command.split(' ')[0]]()
-        self.__slack_client.api_call("chat.postMessage", channel= channel, text=message, as_user=True)
+            if command.startswith('hi'):
+                message = 'Hello, how may I help you ?'
+            else if command.startswith('do'):
+                message = 'I would love to once you code how to do it.'
+            else:
+                pass
+            
+            self.__slack_client.api_call("chat.postMessage", channel= channel, text=message, as_user=True)
     
     def run(self):
         if self.__slack_client.rtm_connect():
