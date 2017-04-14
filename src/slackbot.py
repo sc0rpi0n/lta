@@ -21,14 +21,14 @@ class SlackBot(threading.Thread):
             raise Exception('Please define Slack Bot Token in environment.')
         self.__command_handler = command_handler
     
-    def __parse_slack_output(slack_rtm_output):
+    def __parse_slack_output(self, slack_rtm_output):
         if slack_rtm_output and len(slack_rtm_output) > 0:
             for output in slack_rtm_output:
                 if output and 'text' in output and self.__AT_BOT in output['text']:
                     return output['text'].split(self.__AT_BOT)[1].strip().lower(), output['channel']
         return None, None
     
-    def __handle_command(command, channel):
+    def __handle_command(self, command, channel):
         message = "Not sure what you mean."
         if self.__command_handler:
             message = self.__command_handler.handle(command)
