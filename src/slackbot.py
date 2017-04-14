@@ -35,7 +35,7 @@ class SlackBot(threading.Thread):
         else:
             if command.startswith('hi'):
                 message = 'Hello, how may I help you ?'
-            else if command.startswith('do'):
+            elif command.startswith('do'):
                 message = 'I would love to once you code how to do it.'
             else:
                 pass
