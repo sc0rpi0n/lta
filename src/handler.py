@@ -15,8 +15,12 @@ class CommandHandler():
     def handle(self, command = 'hi'):
         command_switcher = {
             'hi' : self.sayhi,
-            'do' : self.do,
+            'hi.' : self.sayhi,
+            'hi!' : self.sayhi,
             'hello' : self.sayhi,
+            'hello.' : self.sayhi,
+            'hello!' : self.sayhi,
+            'do' : self.do,
         }
         try:
             command_start = command.split(' ')[0]
