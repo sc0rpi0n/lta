@@ -1,11 +1,12 @@
 from slackbot import SlackBot
+from handler import CommandHandler
 
 def main():
     print('Starting slack bot')
     try:
-        lta_slack = SlackBot()
+        handler = CommandHandler()
+        lta_slack = SlackBot(handler)
         lta_slack.start()
-        print('Slack bot started')
         lta_slack.join()
     except Exception as e:
         print (e.message)
