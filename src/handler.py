@@ -1,3 +1,5 @@
+import os
+
 class CommandHandler():
 
     def __init__(self):
@@ -12,8 +14,10 @@ class CommandHandler():
     def unknown_command(self, command):
         return 'I am not sure what you mean. I do not know how to process that request.'
     
-    def random(self):
-        return 'I did something.'
+    def say(self, command):
+        message = 'espeak "%s" 2>>/dev/null' % command.split('say')[1].strip().lower() 
+        os.system(message)
+        return 'Did you hear me say ' + command.split('say')[1].strip().lower()
 
     def handle(self, command = 'hi'):
         command_switcher = {
@@ -24,7 +28,7 @@ class CommandHandler():
             'hello.' : self.sayhi,
             'hello!' : self.sayhi,
             'do' : self.do,
-            'do something' : self.random,
+            'say' : self.say,
         }
         try:
             command_start = command.split(' ')[0]
