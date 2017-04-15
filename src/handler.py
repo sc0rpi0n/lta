@@ -1,4 +1,4 @@
-import os
+import os, platform
 
 class CommandHandler():
 
@@ -18,6 +18,18 @@ class CommandHandler():
         message = 'espeak "%s" 2>>/dev/null' % command.split('say')[1].strip().lower() 
         os.system(message)
         return 'Did you hear me say ' + command.split('say')[1].strip().lower()
+    
+    def systeminfo(self, command):
+        os.system('espeak "I am here." 2>>/dev/null')
+        return "dist: %s \n system: %s \n machine: %s \n platform: %s \n uname: %s \n version: %s \n mac_ver: %s " % (
+            str(platform.dist()),
+            platform.system(),
+            platform.machine(),
+            platform.platform(),
+            platform.uname(),
+            platform.version(),
+            platform.mac_ver(),
+            )
 
     def handle(self, command = 'hi'):
         command_switcher = {
@@ -29,6 +41,7 @@ class CommandHandler():
             'hello!' : self.sayhi,
             'do' : self.do,
             'say' : self.say,
+            'system_info' : self.systeminfo,
         }
         try:
             command_start = command.split(' ')[0]
