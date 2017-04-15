@@ -4,13 +4,16 @@ class CommandHandler():
         pass
     
     def sayhi(self, command):
-        return 'Hello, how may I help you ?'
+        return 'Hello, I am LTA. How may I help you ?'
     
     def do(self, command):
         return 'I would love to finish your request once you teach me how to do it.'
     
     def unknown_command(self, command):
         return 'I am not sure what you mean. I do not know how to process that request.'
+    
+    def random(self):
+        return 'I did something.'
 
     def handle(self, command = 'hi'):
         command_switcher = {
@@ -21,6 +24,7 @@ class CommandHandler():
             'hello.' : self.sayhi,
             'hello!' : self.sayhi,
             'do' : self.do,
+            'do something' : self.random,
         }
         try:
             command_start = command.split(' ')[0]
