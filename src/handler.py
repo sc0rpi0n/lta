@@ -21,7 +21,7 @@ class CommandHandler():
     
     def systeminfo(self, command):
         os.system('espeak "I am here." 2>>/dev/null')
-        return "dist: %s \n system: %s \n machine: %s \n platform: %s \n uname: %s \n version: %s \n mac_ver: %s  %s" % (
+        return "dist: %s \n system: %s \n machine: %s \n platform: %s \n uname: %s \n version: %s \n mac_ver: %s \n  %s" % (
             str(platform.dist()),
             platform.system(),
             platform.machine(),
