@@ -21,7 +21,7 @@ class CommandHandler():
     
     def systeminfo(self, command):
         os.system('espeak "I am here." 2>>/dev/null')
-        return "dist: %s \n system: %s \n machine: %s \n platform: %s \n uname: %s \n version: %s \n mac_ver: %s " % (
+        return "dist: %s \n system: %s \n machine: %s \n platform: %s \n uname: %s \n version: %s \n mac_ver: %s  %s" % (
             str(platform.dist()),
             platform.system(),
             platform.machine(),
@@ -29,6 +29,7 @@ class CommandHandler():
             platform.uname(),
             platform.version(),
             platform.mac_ver(),
+            os.popen('vcgencmd measure_temp').readline(),
             )
 
     def handle(self, command = 'hi'):
